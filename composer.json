@@ -1,5 +1,10 @@
 {
     "name": "edson/mp-ecommerce-php",
     "type": "project",
-    "require": {}
+    "require": {
+        "mercadopago/dx-php": "2.0.0"
+    },
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "^178.0"
+    }
 }
