@@ -70,7 +70,10 @@
                 <br>
                 <h2>Tu pago se encuentra en estado pendiente. <br>
                  Te notificaremos cuando se apruebe.</h2>
-                <br>                
+                <br> 
+                                <br>
+
+                <h4><a href="/">Regresar al inicio</a></h4>               
             </center>          
 
         </div>

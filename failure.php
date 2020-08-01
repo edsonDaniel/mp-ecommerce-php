@@ -70,7 +70,11 @@
                 <br>
                 <h2>Intentalo de nuevo más tarde.</h2>
                 <br>                
-            </center>          
+            </center>  
+
+                            <br>
+
+                <h4><a href="/">Regresar al inicio</a></h4>        
 
         </div>
     </div>

@@ -78,6 +78,10 @@
                     <li><b>Tipo de pago:</b> <?php echo $_GET["payment_type"]; ?></li>
                     <!-- <li>ID de productos: <?php echo $_GET[""]; ?></li>-->
                 </ul>
+
+                <br>
+
+                <h4><a href="/">Regresar al inicio</a></h4>
                 
             </center>          
 
