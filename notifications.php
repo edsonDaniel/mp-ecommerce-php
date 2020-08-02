@@ -56,7 +56,7 @@ $fp = fopen('id_not_'.$datos['id'].'.json', 'w');
 fwrite($fp, json_encode($datos));
 fclose($fp);
 
-*/
+
 
 if($_POST){
 	$fp = fopen('id_not.json', 'w');
@@ -68,4 +68,20 @@ else{
 	//fwrite($fp, json_encode($_POST));
 	fclose($fp);
 }
+*/
+
+
+// Recibir el cuerpo de la petición.
+$input = @file_get_contents("php://input");
+// Parsear el contenido como JSON.
+$eventJson = json_decode($input);
+
+$fp = fopen('id_noti_'.$input->id.'.json', 'w');
+	fwrite($fp, json_encode($input));
+	fclose($fp);
+
+// Usar los datos del Webhooks para alguna acción.
+
+// Responder
+http_response_code(200);
 ?>
