@@ -76,7 +76,7 @@ $input = @file_get_contents("php://input");
 // Parsear el contenido como JSON.
 $eventJson = json_decode($input);
 
-$fp = fopen('/notifications/id_noti_creada.json', 'w');
+$fp = fopen('./notifications/id_noti_creada.json', 'w');
 	fwrite($fp, "Sijala creo");
 	fclose($fp);
 
