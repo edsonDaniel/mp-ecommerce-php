@@ -74,7 +74,7 @@ else{
 // Recibir el cuerpo de la petición.
 $input = @file_get_contents("php://input");
 // Parsear el contenido como JSON.
-$eventJson = json_decode($input);
+$eventJson = json_decode($input, true);
 
 
 /*$fp = fopen('./notifications/id_noti_creada.json', 'w');
@@ -87,7 +87,7 @@ $eventJson = json_decode($input);
 
 	$sentencia = $pdo->prepare("INSERT INTO notifications (id, live_mode, type, date_created,application_id, user_id, version, api_version, action, data_id, data_values) VALUES (:id, :live_mode, :type, :date_created, :application_id, :user_id, :version, :api_version, :action, :data_id, :data_values)");
 
-	$id = $eventJson->id;
+	$id = $eventJson["id"];
 	$live_mode = $eventJson->live_mode;
 	$type = $eventJson->type;
 	$date_created = $eventJson->date_created;
