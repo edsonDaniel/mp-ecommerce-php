@@ -76,12 +76,58 @@ $input = @file_get_contents("php://input");
 // Parsear el contenido como JSON.
 $eventJson = json_decode($input);
 
-$fp = fopen('./notifications/id_noti_creada.json', 'w');
+
+/*$fp = fopen('./notifications/id_noti_creada.json', 'w');
 	fwrite($fp, "Sijala creo");
 	fclose($fp);
 
 // Usar los datos del Webhooks para alguna acción.
+*/
 
+
+	$sentencia = $pdo->prepare("INSERT INTO notifications (id, live_mode, type, date_created,application_id, user_id, version, api_version, action, data_id, data_values) VALUES (:id, :live_mode, :type, :date_created, :application_id, :user_id, :version, :api_version, :action, :data_id, :data_values)");
+
+	$id = $eventJson->id;
+	$live_mode = $eventJson->live_mode;
+	$type = $eventJson->type;
+	$date_created = $eventJson->date_created;
+	$application_id = $eventJson->application_id;
+	$user_id = $eventJson->user_id;
+	$version = $eventJson->version;
+	$api_version = $eventJson->api_version;
+	$action = $eventJson->action;
+	$data_id = $eventJson->data['id'];
+
+	$datos = $eventJson->data;
+	$val_datos ="";
+
+	if(is_array($datos)){
+		if(count($datos)>1){
+			foreach ($datos as $key => $value) {
+				$val_datos.$key.'='.$value.'/';
+			}
+		}
+		else{
+			$val_datos = NULL;
+		}
+	}
+	else $val_datos = NULL;
+
+	$sentencia->bindParam(':id', $id);
+	$sentencia->bindParam(':live_mode', $live_mode);
+	$sentencia->bindParam(':type', $type);
+	$sentencia->bindParam(':date_created', $date_created);
+	$sentencia->bindParam(':application_id', $application_id);
+	$sentencia->bindParam(':user_id', $user_id);
+	$sentencia->bindParam(':version', $version);
+	$sentencia->bindParam(':api_version', $api_version);
+	$sentencia->bindParam(':action', $action);
+	$sentencia->bindParam(':data_id', $data_id);
+	$sentencia->bindParam(':data_values', $val_datos);
+
+// insertar una fila
+
+$sentencia->execute();
 // Responder
 http_response_code(200);
 ?>
