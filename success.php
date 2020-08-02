@@ -76,7 +76,7 @@
                     <li><b>Estado del pago:</b> <?php echo $_GET["collection_status"]; ?></li>
                     <li><b>Referencia de pago:</b> <?php echo $_GET["external_reference"]; ?></li>
                     <li><b>Tipo de pago:</b> <?php echo $_GET["payment_type"]; ?></li>
-                    <!-- <li>ID de productos: <?php echo $_GET[""]; ?></li>-->
+                    <li>ID de preferencia: <?php echo $_GET["preference_id"]; ?></li>
                 </ul>
 
                 <br>
