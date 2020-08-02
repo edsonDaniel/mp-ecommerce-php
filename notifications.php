@@ -76,8 +76,8 @@ $input = @file_get_contents("php://input");
 // Parsear el contenido como JSON.
 $eventJson = json_decode($input);
 
-$fp = fopen('id_noti_'.$input->id.'.json', 'w');
-	fwrite($fp, json_encode($input));
+$fp = fopen('/notifications/id_noti_creada.json', 'w');
+	fwrite($fp, "Sijala creo");
 	fclose($fp);
 
 // Usar los datos del Webhooks para alguna acción.
