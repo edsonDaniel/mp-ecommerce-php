@@ -53,6 +53,7 @@ $preference->back_urls = array(
     "pending" => "https://edsonperez-mp-commerce-php.herokuapp.com/pending.php"
 );
 $preference->auto_return = "approved";
+$preference->notification_url = "https://edsonperez-mp-commerce-php.herokuapp.com/notifications.php";
 
 $preference->items = array($item);
 $preference->external_reference = 'edsondanyel@gmail.com';
