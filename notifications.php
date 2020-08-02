@@ -42,17 +42,17 @@ try {
 }
 
 $datos = array(
-	'id' => $_GET['id'],
-	'live_mode' => $_GET['live_mode'],
-	'type' => $_GET['type'],
-	'date_created' => $_GET['date_created'],
-	'user_id' => $_GET['user_id'],
-	'version' => $_GET['version'], 
-	'api_version' => $_GET['api_version'], 
-	'action' => $_GET['action'],  
-	'data' => $_GET['data']);
+	'id' => $_POST['id'],
+	'live_mode' => $_POST['live_mode'],
+	'type' => $_POST['type'],
+	'date_created' => $_POST['date_created'],
+	'user_id' => $_POST['user_id'],
+	'version' => $_POST['version'], 
+	'api_version' => $_POST['api_version'], 
+	'action' => $_POST['action'],  
+	'data' => $_POST['data']);
 
-$fp = fopen('data'.$datos['id'].'.json', 'w');
+$fp = fopen('id_not_'.$datos['id'].'.json', 'w');
 fwrite($fp, json_encode($datos));
 fclose($fp);
 
