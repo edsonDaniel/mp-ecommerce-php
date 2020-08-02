@@ -41,7 +41,7 @@ try {
     die();
 }
 
-$datos = array(
+/*$datos = array(
 	'id' => $_POST['id'],
 	'live_mode' => $_POST['live_mode'],
 	'type' => $_POST['type'],
@@ -56,5 +56,16 @@ $fp = fopen('id_not_'.$datos['id'].'.json', 'w');
 fwrite($fp, json_encode($datos));
 fclose($fp);
 
+*/
 
+if($_POST){
+	$fp = fopen('id_not.json', 'w');
+	fwrite($fp, json_encode($_POST));
+	fclose($fp);
+}
+else{
+	$fp = fopen('id_not_creado.json', 'w');
+	//fwrite($fp, json_encode($_POST));
+	fclose($fp);
+}
 ?>
