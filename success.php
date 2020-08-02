@@ -89,7 +89,7 @@
     </div>
 
     <div role="alert" class="as-loader-text ally" aria-live="assertive"></div>
-    <div class="as-footnotes " style="position: fixed; bottom: 0; left: 0; width: 100%;">
+    <div class="as-footnotes " style="width: 100%;">
         <div class="as-footnotes-content">
             <div class="as-footnotes-sosumi">
                 Todos los derechos reservados Tienda Tecno 2018

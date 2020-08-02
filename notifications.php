@@ -98,38 +98,41 @@ $eventJson = json_decode($input, true);
 	$action = $eventJson["action"];
 	$data_id = $eventJson["data"];
 
-	
-	$val_datos ="";
+	if($id != NULL){
+		$val_datos ="";
 
-	if(is_array($data_id)){
-		if(count($data_id)>1){
-			foreach ($datos as $key => $value) {
-				$val_datos.$key.'='.$value.'/';
+		if(is_array($data_id)){
+			if(count($data_id)>1){
+				foreach ($datos as $key => $value) {
+					$val_datos.$key.'='.$value.'/';
+				}
+			}
+			else{
+				$val_datos = NULL;
 			}
 		}
-		else{
-			$val_datos = NULL;
-		}
+		else $val_datos = NULL;
+
+		$id_data = $data_id['id'];
+
+		$sentencia->bindParam(':id', $id);
+		$sentencia->bindParam(':live_mode', $live_mode);
+		$sentencia->bindParam(':type', $type);
+		$sentencia->bindParam(':date_created', $date_created);
+		$sentencia->bindParam(':application_id', $application_id);
+		$sentencia->bindParam(':user_id', $user_id);
+		$sentencia->bindParam(':version', $version);
+		$sentencia->bindParam(':api_version', $api_version);
+		$sentencia->bindParam(':action', $action);
+		$sentencia->bindParam(':data_id', $id_data);
+		$sentencia->bindParam(':data_values', $val_datos);
+
+		// insertar una fila
+		$sentencia->execute();
 	}
-	else $val_datos = NULL;
 
-	$id_data = $data_id['id'];
-
-	$sentencia->bindParam(':id', $id);
-	$sentencia->bindParam(':live_mode', $live_mode);
-	$sentencia->bindParam(':type', $type);
-	$sentencia->bindParam(':date_created', $date_created);
-	$sentencia->bindParam(':application_id', $application_id);
-	$sentencia->bindParam(':user_id', $user_id);
-	$sentencia->bindParam(':version', $version);
-	$sentencia->bindParam(':api_version', $api_version);
-	$sentencia->bindParam(':action', $action);
-	$sentencia->bindParam(':data_id', $id_data);
-	$sentencia->bindParam(':data_values', $val_datos);
-
-// insertar una fila
-
-$sentencia->execute();
+	
+	
 // Responder
 http_response_code(200);
 ?>
