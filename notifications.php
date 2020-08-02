@@ -88,21 +88,21 @@ $eventJson = json_decode($input, true);
 	$sentencia = $pdo->prepare("INSERT INTO notifications (id, live_mode, type, date_created,application_id, user_id, version, api_version, action, data_id, data_values) VALUES (:id, :live_mode, :type, :date_created, :application_id, :user_id, :version, :api_version, :action, :data_id, :data_values)");
 
 	$id = $eventJson["id"];
-	$live_mode = $eventJson->live_mode;
-	$type = $eventJson->type;
-	$date_created = $eventJson->date_created;
-	$application_id = $eventJson->application_id;
-	$user_id = $eventJson->user_id;
-	$version = $eventJson->version;
-	$api_version = $eventJson->api_version;
-	$action = $eventJson->action;
-	$data_id = $eventJson->data['id'];
+	$live_mode = $eventJson["live_mode"];
+	$type = $eventJson["type"];
+	$date_created = $eventJson["date_created"];
+	$application_id = $eventJson["application_id"];
+	$user_id = $eventJson["user_id"];
+	$version = $eventJson["version"];
+	$api_version = $eventJson["api_version"];
+	$action = $eventJson["action"];
+	$data_id = $eventJson["data"];
 
-	$datos = $eventJson->data;
+	
 	$val_datos ="";
 
-	if(is_array($datos)){
-		if(count($datos)>1){
+	if(is_array($data_id)){
+		if(count($data_id)>1){
 			foreach ($datos as $key => $value) {
 				$val_datos.$key.'='.$value.'/';
 			}
@@ -113,6 +113,8 @@ $eventJson = json_decode($input, true);
 	}
 	else $val_datos = NULL;
 
+	$id_data = $data_id['id'];
+
 	$sentencia->bindParam(':id', $id);
 	$sentencia->bindParam(':live_mode', $live_mode);
 	$sentencia->bindParam(':type', $type);
@@ -122,7 +124,7 @@ $eventJson = json_decode($input, true);
 	$sentencia->bindParam(':version', $version);
 	$sentencia->bindParam(':api_version', $api_version);
 	$sentencia->bindParam(':action', $action);
-	$sentencia->bindParam(':data_id', $data_id);
+	$sentencia->bindParam(':data_id', $id_data);
 	$sentencia->bindParam(':data_values', $val_datos);
 
 // insertar una fila
