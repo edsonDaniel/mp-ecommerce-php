@@ -197,6 +197,8 @@ $preference->save();
                                             <?php echo "$" . $_POST['price']*$_POST['unit'] ?>
                                         </h3>
                                         <br>
+
+                                        <!--<?php echo $preference->items[0]->picture_url; ?>-->
                                     </div>
                                     <!--<button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>-->
                                     
